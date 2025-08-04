@@ -45,4 +45,4 @@ jobs:
           RENOVATE_PLATFORM: github
           RENOVATE_PLATFORM_COMMIT: true
           RENOVATE_ONBOARDING: false
-          LOG_LEVEL: debug
+          LOG_LEVEL: info
