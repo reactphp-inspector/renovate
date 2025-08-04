@@ -17,6 +17,10 @@ on:
         required: false
         type: string
 
+concurrency:
+  group: 'renovate'
+  cancel-in-progress: true
+
 jobs:
   renovate:
     name: Renovate
