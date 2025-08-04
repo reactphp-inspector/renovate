@@ -6,6 +6,9 @@ on:
   push:
     branches:
       - 'main'
+  issues:
+    types:
+      - edited
   workflow_call:
     inputs:
       runsOn:
