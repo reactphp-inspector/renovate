@@ -2,7 +2,9 @@ name: Renovate
 
 on:
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 */3 * * *"
+  #    - cron: "* 6-22/3 * * 1-5"
+  #    - cron: "* 12-23/3 * * 0,6"
   push:
     branches:
       - 'main'
@@ -19,7 +21,7 @@ on:
 
 concurrency:
   group: 'renovate'
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   renovate:
@@ -43,11 +45,18 @@ jobs:
         env:
           RENOVATE_ALLOW_PLUGINS: true
           RENOVATE_ALLOW_SCRIPTS: true
+          RENOVATE_ALLOWED_COMMANDS: "[\"git add .\"]"
           RENOVATE_AUTODISCOVER: true
           RENOVATE_BINARY_SOURCE: docker
+          RENOVATE_POST_UPGRADE_TASKS: "{\"commands\": [\"git add .\"], \"fileFilters\": [\"**/*\"], \"executionMode\": \"update\"}"
+          RENOVATE_DOCKER_CLI_OPTIONS: "-e=COMPOSER_IGNORE_PLATFORM_REQS=1"
           RENOVATE_DRY_RUN: "null"
+          RENOVATE_IGNORE_PLUGINS: false
+          RENOVATE_IGNORE_SCRIPTS: false
           RENOVATE_INTERNAL_CHECKS_FILTER: strict
           RENOVATE_PLATFORM: github
           RENOVATE_PLATFORM_COMMIT: true
           RENOVATE_ONBOARDING: false
           LOG_LEVEL: info
+#          LOG_LEVEL: debug
+#          LOG_FORMAT: json
