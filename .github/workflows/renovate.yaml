@@ -47,7 +47,7 @@ jobs:
           RENOVATE_ALLOWED_COMMANDS: "[\"git add -A .\"]"
           RENOVATE_AUTODISCOVER: true
           RENOVATE_BINARY_SOURCE: docker
-          RENOVATE_POST_UPGRADE_TASKS: "{\"commands\": [\"git add -A .\"], \"fileFilters\": [\"**/*\"], \"executionMode\": \"update\"}"
+          RENOVATE_POST_UPGRADE_TASKS: "{\"commands\": [\"git add -A .\"], \"fileFilters\": [\".**/*\", \"**/*\"], \"executionMode\": \"update\"}"
           RENOVATE_DOCKER_CLI_OPTIONS: "-e=COMPOSER_IGNORE_PLATFORM_REQS=1"
           RENOVATE_DRY_RUN: "null"
           RENOVATE_IGNORE_PLUGINS: false
